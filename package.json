@@ -1,0 +1,17 @@
+{
+  "name": "js-quiz",
+  "version": "1.0.0",
+  "description": "''",
+  "main": "index.js",
+  "repository": "https://github.com/jonathanwalton720/js-quiz.git",
+  "author": "jonathanwalton720@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.13"
+  },
+  "scripts":{
+    "build": "webpack --mode-production",
+    "webpack": "webpack -w --mode=development"
+  }
+}

@@ -23,3 +23,5 @@ var allQuestions = [
     {question: "In the song `The 12 days of Christmas`, what are the 6 geese a-doing?", choices: ["Laying", "Leaping", "Honking"], correctAnswer:0},
     {question: "In cricket, where would you find the chain?", choices: ["Between the wickets.", "Surrounding the boundary.", "Measuring the pitch."], correctAnswer:0},
 ];
+
+window['allQuestions'] = allQuestions;
