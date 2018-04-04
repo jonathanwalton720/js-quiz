@@ -6,12 +6,15 @@
   "repository": "https://github.com/jonathanwalton720/js-quiz.git",
   "author": "jonathanwalton720@gmail.com",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "scripts": {
+    "build": "webpack --mode-production",
+    "watch": "webpack -w --mode=development"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.7.0",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.13"
-  },
-  "scripts":{
-    "build": "webpack --mode-production",
-    "webpack": "webpack -w --mode=development"
   }
 }

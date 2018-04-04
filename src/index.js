@@ -3,7 +3,7 @@
  */
 
 var allQuestions = [
-    {question: "Who is Prime Minister of the United Kingdom?", choices: ["David Cameron", "Gordon Brown", "Winston Churchill", "Tony Blair"], correctAnswer:0},,
+    {question: "Who is Prime Minister of the United Kingdom?", choices: ["David Cameron", "Gordon Brown", "Winston Churchill", "Tony Blair"], correctAnswer:0},
     {question: "If a snail climbed up a 12 ft wall at a steady rate of 3 ft per day, but slipped down 2 ft every night, how many days would it take him to reach the top?", choices: ["10 days", "12 days", "4 days", "8 days"], correctAnswer:0},
     {question: "On his egg deliveries, farmer Fred sets off with 400 eggs. At the first delivery he drops off 5 doz`, at the second 12 doz`, and at the last one he delivers 15 doz`. How many eggs does he take home to his brooding wife?", choices: ["Sixteen", "Twelve", "Four", "Fifteen"], correctAnswer:0},
     {question: "According to the song, from which track does the Chattanooga choo choo leave Pennsylvania station?", choices: ["Track 29", "Track 37", "Track 22", "Track 13"], correctAnswer:0},
@@ -24,4 +24,109 @@ var allQuestions = [
     {question: "In cricket, where would you find the chain?", choices: ["Between the wickets.", "Surrounding the boundary.", "Measuring the pitch."], correctAnswer:0},
 ];
 
-window['allQuestions'] = allQuestions;
+var currentQuestion = 0;
+var question = document.getElementById('question');
+var answers = document.getElementById('answers');
+var next = document.getElementById('next');
+var previous = document.getElementById('previous');
+var maxQuestion = allQuestions.length - 1;
+var selectedAnswers = {};
+var scoreQuiz = document.getElementById('scoreQuiz');
+
+function goToQuestion (questionNumber) {
+    var isLastQuestion = currentQuestion == maxQuestion;
+
+    answers.innerHTML = "";
+    previous.disabled = currentQuestion == 0;
+    next.disabled = isLastQuestion;
+    if (isLastQuestion) {
+        scoreQuiz.disabled = false;
+    }
+
+    question.innerHTML = allQuestions[questionNumber].question;
+
+    var choices = allQuestions[questionNumber].choices;
+    for (var i = 0; i < choices.length; i++) {
+        var div = document.createElement('div');
+        var answer = document.createElement('input');
+        var label = document.createElement('label');
+        var answerText = document.createElement('span');
+        var answerId = 'answer' + i;
+
+        div.className = 'radio';
+
+        answer.id = answerId;
+        answer.name = 'answers';
+        answer.type = 'radio';
+        answer.value = i;
+
+        label.setAttribute('for', answerId);
+
+        answerText.innerHTML = choices[i];
+
+        answers.appendChild(div);
+        div.appendChild(label);
+        label.appendChild(answer);
+        label.appendChild(answerText);
+
+    }
+
+    if (selectedAnswers[questionNumber]) {
+        var selectedValue = selectedAnswers[questionNumber];
+        var radioList = answers.getElementsByTagName('input');
+        radioList[selectedValue].checked = true;
+    }
+
+}
+
+function getSelectedAnswer(radioContainer) {
+    var radioList = radioContainer.getElementsByTagName('input');
+    for (var i = 0; i < radioList.length; i++) {
+        if (radioList[i].checked) {
+            return radioList[i].value;
+        }
+    }
+    return null;
+}
+
+function getCorrectAnswers() {
+    var numCorrect = 0;
+    for (var answer in selectedAnswers) {
+        var answerValue = selectedAnswers[answer];
+        if (allQuestions[answer].correctAnswer == answerValue) {
+            numCorrect += 1;
+        }
+    }
+    return numCorrect;
+}
+
+next.onclick = function() {
+    selectedAnswers[currentQuestion] = getSelectedAnswer(answers);
+    currentQuestion += 1;
+    goToQuestion(currentQuestion);
+}
+
+previous.onclick = function() {
+    selectedAnswers[currentQuestion] = getSelectedAnswer(answers);
+    currentQuestion -= 1;
+    goToQuestion(currentQuestion);
+}
+
+scoreQuiz.onclick = function() {
+    var scoreReport = document.getElementById('scoreReport');
+    selectedAnswers[currentQuestion] = getSelectedAnswer(answers);
+    scoreReport.innerHTML = "";
+
+    var numCorrect = getCorrectAnswers();
+    var scoreReport = document.getElementById("scoreReport");
+    var scoreHeader = document.createElement("p");
+    var scoreBody = document.createElement("p");
+
+    scoreHeader.className = "lead";
+    scoreHeader.innerHTML = "Score Report";
+    scoreBody.innerHTML = "You have answered " + numCorrect + " out of " + maxQuestion + " correct!";
+    scoreReport.appendChild(scoreHeader);
+    scoreReport.appendChild(scoreBody);
+}
+
+goToQuestion(currentQuestion);
