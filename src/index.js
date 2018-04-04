@@ -118,7 +118,6 @@ scoreQuiz.onclick = function() {
     scoreReport.innerHTML = "";
 
     var numCorrect = getCorrectAnswers();
-    var scoreReport = document.getElementById("scoreReport");
     var scoreHeader = document.createElement("p");
     var scoreBody = document.createElement("p");
 
