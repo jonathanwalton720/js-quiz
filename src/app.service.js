@@ -1,4 +1,12 @@
 
+class QuizQuestion {
+  constructor(question, choices, correctAnswer) {
+    this.question = question;
+    this.choices = choices;
+    this.correctAnswer = correctAnswer;
+  }
+}
+
 var allQuestions = [
   { question: "Who is Prime Minister of the United Kingdom?", choices: ["David Cameron", "Gordon Brown", "Winston Churchill", "Tony Blair"], correctAnswer: 0 },
   { question: "If a snail climbed up a 12 ft wall at a steady rate of 3 ft per day, but slipped down 2 ft every night, how many days would it take him to reach the top?", choices: ["10 days", "12 days", "4 days", "8 days"], correctAnswer: 0 },
@@ -21,4 +29,12 @@ var allQuestions = [
   { question: "In cricket, where would you find the chain?", choices: ["Between the wickets.", "Surrounding the boundary.", "Measuring the pitch."], correctAnswer: 0 },
 ];
 
-module.exports = allQuestions;
+function GetQuizQuestions() {
+  var questions = [];
+  for (var q of allQuestions) {
+    questions.push(new QuizQuestion(q.question, q.choices, q.correctAnswer));
+  }
+  return questions;
+}
+
+module.exports = GetQuizQuestions();
