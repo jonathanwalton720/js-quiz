@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Choice extends React.Component {
   render() {
@@ -10,4 +11,9 @@ export default class Choice extends React.Component {
         </label>
       </div>;
   }
+}
+
+Choice.propTypes = {
+  index: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired
 }

@@ -5,7 +5,10 @@
         "es6": true,
         "jest/globals": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -15,5 +18,13 @@
     },
     "plugins": [
         "jest", "react"
-    ]
+    ],
+    "settings": {
+      "react": {
+        "createClass": "createReactClass",
+        "pragma": "React",
+        "version": "16.3"
+      },
+      "propWrapperFunctions": [ "forbidExtraProps" ]
+    }
 }

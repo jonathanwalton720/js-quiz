@@ -1,5 +1,6 @@
 import React from 'react';
 import Choice from './choice';
+import PropTypes from 'prop-types';
 
 export default class Question extends React.Component {
   render() {
@@ -15,4 +16,9 @@ export default class Question extends React.Component {
       <div id="answers" className="radio">{ choicesList }</div>
     </div>;
   }
+}
+
+Question.propTypes = {
+  choices: PropTypes.array.isRequired,
+  text: PropTypes.string.isRequired
 }

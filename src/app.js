@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Question from './question';
+import Question from 'question';
 import allQuestions from './app.service';
 
 export default class App extends React.Component {
@@ -19,21 +19,20 @@ export default class App extends React.Component {
   }
 
   _onNextClick() {
-    this.state.selectedAnswers[this.state.currentQuestion] = this.state.selectedAnswer;
-    this.setState({ currentQuestion: this.state.currentQuestion += 1 });
+    this.updateSelectedAnswers(this.state.currentQuestion, this.state.selectedAnswer);
+    this.setState({ currentQuestion: this.state.currentQuestion + 1 });
     this.goToQuestion(this.state.currentQuestion);
   }
 
   _onPreviousClick() {
-    this.state.selectedAnswers[this.state.currentQuestion] = this.state.selectedAnswer;
-    this.setState({ currentQuestion: this.state.currentQuestion -= 1 });
+    this.updateSelectedAnswers(this.state.currentQuestion, this.state.selectedAnswer);
+    this.setState({ currentQuestion: this.state.currentQuestion - 1 });
     this.goToQuestion(this.state.currentQuestion);
   }
 
   _onScoreQuizClick() {
-    debugger;
     var scoreReport = document.getElementById('scoreReport');
-    this.state.selectedAnswers[this.state.currentQuestion] = this.state.selectedAnswer;
+    this.updateSelectedAnswers(this.state.currentQuestion, this.state.selectedAnswer);
     scoreReport.innerHTML = "";
 
     var numCorrect = this.getCorrectAnswers(this.state.selectedAnswers);
@@ -47,8 +46,14 @@ export default class App extends React.Component {
     scoreReport.appendChild(scoreBody);
   }
 
+  updateSelectedAnswers(index, value) {
+    var selectedAnswers = this.state.selectedAnswers;
+    selectedAnswers[index] = value;
+    this.state.setState({selectedAnsers: selectedAnswers});
+  }
+
   setSelectedAnswer(value) {
-    this.state.selectedAnswer = value;
+    this.state.setState({selectedAnswer: value});
   }
 
   getCorrectAnswers() {
@@ -62,10 +67,6 @@ export default class App extends React.Component {
   goToQuestion(questionNumber) {
     if (this.state.selectedAnswers[questionNumber]) {
       this.selectedValue = this.state.selectedAnswers[questionNumber];
-      // var radioList = answers.getElementsByTagName('input');
-      // if (radioList) {
-      //   radioList[selectedValue].checked = true;
-      // }
     }
   }
 
