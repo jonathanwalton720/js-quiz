@@ -1,11 +1,4 @@
-
-class QuizQuestion {
-  constructor(question, choices, correctAnswer) {
-    this.question = question;
-    this.choices = choices;
-    this.correctAnswer = correctAnswer;
-  }
-}
+import QuizQuestion from './quiz-question';
 
 var allQuestions = [
   { question: "Who is Prime Minister of the United Kingdom?", choices: ["David Cameron", "Gordon Brown", "Winston Churchill", "Tony Blair"], correctAnswer: 0 },
@@ -29,12 +22,12 @@ var allQuestions = [
   { question: "In cricket, where would you find the chain?", choices: ["Between the wickets.", "Surrounding the boundary.", "Measuring the pitch."], correctAnswer: 0 },
 ];
 
-function GetQuizQuestions() {
-  var questions = [];
-  for (var q of allQuestions) {
-    questions.push(new QuizQuestion(q.question, q.choices, q.correctAnswer));
+export default class Service {
+  static GetQuizQuestions() {
+    var questions = [];
+    for (var q of allQuestions) {
+      questions.push(new QuizQuestion(q.question, q.choices, q.correctAnswer));
+    }
+    return questions;
   }
-  return questions;
 }
-
-module.exports = GetQuizQuestions();

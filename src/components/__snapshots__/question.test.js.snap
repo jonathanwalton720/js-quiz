@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+<div>
+  <div>
+    <p
+      className="lead"
+      id="question"
+    >
+      What is my name?
+    </p>
+  </div>
+  <div
+    className="radio"
+    id="answers"
+  >
+    <div
+      htmlclass="radio"
+    >
+      <label
+        htmlFor="answer0"
+      >
+        <input
+          id="answer0"
+          name="answers"
+          type="radio"
+          value={0}
+        />
+        <span>
+          Tim
+        </span>
+      </label>
+    </div>
+    <div
+      htmlclass="radio"
+    >
+      <label
+        htmlFor="answer1"
+      >
+        <input
+          id="answer1"
+          name="answers"
+          type="radio"
+          value={1}
+        />
+        <span>
+          Bob
+        </span>
+      </label>
+    </div>
+    <div
+      htmlclass="radio"
+    >
+      <label
+        htmlFor="answer2"
+      >
+        <input
+          id="answer2"
+          name="answers"
+          type="radio"
+          value={2}
+        />
+        <span>
+          Harry
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+<div
+  htmlclass="radio"
+>
+  <label
+    htmlFor="answer5"
+  >
+    <input
+      id="answer5"
+      name="answers"
+      type="radio"
+      value={5}
+    />
+    <span>
+      This is a choice.
+    </span>
+  </label>
+</div>
+`;

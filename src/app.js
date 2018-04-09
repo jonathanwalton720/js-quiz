@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Question from 'question';
-import allQuestions from './app.service';
+import Question from './question';
+import allQuestions from './service';
 
 export default class App extends React.Component {
   constructor(props) {

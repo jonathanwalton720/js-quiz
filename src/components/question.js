@@ -6,7 +6,7 @@ export default class Question extends React.Component {
   render() {
     var choices = this.props.choices;
     var choicesList = choices.map((choice, index) => 
-      <Choice key={ index } text={choice} index={index} />
+      <Choice key={index} text={choice} index={index} />
     );
 
     return <div> 
