@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Question from './question';
+import Question from './components/question';
 import allQuestions from './service';
 
 export default class App extends React.Component {
