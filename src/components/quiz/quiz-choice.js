@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Choice extends React.Component {
+export default class QuizChoice extends React.Component {
   render() {
     var id = "answer" + this.props.index;
     return <div key={this.props.index} htmlclass="radio">
@@ -13,7 +13,7 @@ export default class Choice extends React.Component {
   }
 }
 
-Choice.propTypes = {
+QuizChoice.propTypes = {
   index: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired
 }

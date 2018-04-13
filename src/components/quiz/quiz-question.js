@@ -1,12 +1,12 @@
 import React from 'react';
-import Choice from './choice';
+import QuizChoice from './quiz-choice';
 import PropTypes from 'prop-types';
 
-export default class Question extends React.Component {
+export default class QuizQuestion extends React.Component {
   render() {
     var choices = this.props.choices;
     var choicesList = choices.map((choice, index) => 
-      <Choice key={index} text={choice} index={index} />
+      <QuizChoice key={index} text={choice} index={index} />
     );
 
     return <div> 
@@ -18,7 +18,7 @@ export default class Question extends React.Component {
   }
 }
 
-Question.propTypes = {
+QuizQuestion.propTypes = {
   choices: PropTypes.array.isRequired,
   text: PropTypes.string.isRequired
 }
